@@ -5,7 +5,7 @@ import sun.misc.FDBigInteger;
 import java.util.Scanner;
 
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] a ) {
         Scanner scanner = new Scanner(System.in);
         DanhSachSinhVien danhSachSinhVien = new DanhSachSinhVien();
         int luaChon = 0;
@@ -16,8 +16,8 @@ public class Test {
 
             System.out.println("1. Thêm sinh viên vào danh sach.\n" +
                     "2. In ra danh sách sinh viên ra màn hình \n" +
-                    "3. Kiểm tra danh sách đó có rỗng hay không\n"+
-                    "4. Lấy ra số lượng sinh viên trong danh sách\n "+
+                    "3. Tìm sinh viên \n"+
+                    "4. Detete sinh viên\n "+
                     "0. Thoát khỏi chương trình");
             luaChon = scanner.nextInt();
             scanner.nextLine();
@@ -28,21 +28,23 @@ public class Test {
                 System.out.println("Nhập điểm trung bình");float diemTrungBinh = scanner.nextFloat();
                 SinhVien sinhVien = new SinhVien(maSinhVien,hoVaTen,namSinh,diemTrungBinh);
                 danhSachSinhVien.temSinhVien(sinhVien);
-
-
-
             } else if (luaChon==2) {
                 //in danh sách sv ra màn hình
                 danhSachSinhVien.inDanhSachSinhVien();
-
-
             } else if (luaChon==3) {
-                System.out.println("Kiểm tra sd rỗng"+danhSachSinhVien.kiemTraDanhSachRong());
+                System.out.println("Sinh vien cần tìm");
+                scanner.nextLine();
+                String findNam = scanner.nextLine();
+                danhSachSinhVien.findAll(findNam);
 
             } else if (luaChon==4) {
-                System.out.println("Số lượng hiện tại"+danhSachSinhVien.layRaSoLuongSV());
+                System.out.println("Nhập vào tên muốn xóa");
+                String deleteID = scanner.nextLine();
+                danhSachSinhVien.delete(deleteID);
+
 
             }
+
         }while(luaChon!=0);
 
 
